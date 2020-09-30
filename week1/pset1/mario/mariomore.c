@@ -13,6 +13,7 @@ int main(void)
 
    for(int iLine = 0; iLine < height; iLine++)
    {
+       
 //print left spaces and hashes
        for(int jColumnSpaceLeft = height -1; jColumnSpaceLeft > iLine; jColumnSpaceLeft--)
         {

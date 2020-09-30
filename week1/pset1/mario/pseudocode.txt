@@ -2,7 +2,7 @@
 2.If height is not a positive integer between 1 and 8 inclusive, or is not an integer at all: go back to step one;
 3.Print the pyramid (lines with columns with spaces and hashes), and then a newline;
 
-Code:
+# Code:
 - declare a variable for height;
 - use the function get_int to ask for a input;
 - to check if the input value is between 1 and 8 inclusive:

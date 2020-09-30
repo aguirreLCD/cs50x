@@ -11,7 +11,6 @@ int main(void)
     }
     while(height < 1 || height > 8);
 
-
    for(int iLine = 0; iLine < height; iLine++)
    {
        for(int jColumnSpace = 0; jColumnSpace > 0; jColumnSpace--)

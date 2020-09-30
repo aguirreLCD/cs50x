@@ -15,7 +15,6 @@ int main(void)
     // checking if the input value is between 1 and 8 inclusive
     while(height < 1 || height > 8);
 
-
     // creating the pyramid whit hashes - bricks
    for(int iLine = 0; iLine < height; iLine++)
    {
