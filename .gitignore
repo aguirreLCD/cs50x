@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # sc50
-/src0
-/src1
+/week0/src0
+/week1/src1
 /c
 week1.pdf
