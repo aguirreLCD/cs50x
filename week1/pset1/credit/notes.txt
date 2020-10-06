@@ -1,0 +1,48 @@
+American Express: 15 digits, starts with 34 or 37;
+MasterCard: 16 digits, starts with 51, 52, 53, 54 or 55;
+Visa: 13 or 16 digits, starts with 4;
+
+4003600000000014
+
+1st case: 4 + 3 + 0 = 7;
+2nd case: (1 * 2)  +   (6 * 2)   +  (4 * 2) =    2 + 12 + 8 =    2 + 1 + 2 + 8 = 13;
+Final sum = 7 + 13 = 20;
+20 % 10 = 0;
+
+// p.e = 5 % 2 = 1;
+
+last digit: modulo 10 = 4003600000000014 % 10 = 4;
+.then
+to scrap the last 2 digits (move 2 digits over): / 100 = 4003600000000014 / 100 = 40036000000000;
+
+1st case:
+1. Iterate through the CC number;
+2. Use modulo to get the last digit;
+3. Add last digit to sum;
+4. Divide the CC number by 100 (to move 2 digits over);
+5. Repeat.
+
+2nd case:
+1. Divde the CC number by 10 (to start to the second to last number);
+2. Iterate through the CC number;
+3. Use modulo to get the last digit;
+4. Multiplyed the last digit by 2 and add to the sum;
+    (to check If some number have 2 digits):
+    4.1 Use modulo for the last digit;
+    4.2 Use division for the 1st digit;
+    4.3 Sum these number up;
+5. Divide the CC number by 100 (to move 2 digits over);
+6. Repeat.
+
+Check the conditionals for the flags: check-flag:
+
+how do we get the first and second, the third and fourth digits (first two digits)?
+
+how do we count the length of the credit card number?
+
+loop:
+number / 10;
+counter++;
+
+ 
+the length of the number / 100
