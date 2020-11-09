@@ -7,6 +7,7 @@
 /week1/c
 /c
 week1.pdf
+
 /week2/src2
 /week2/readability/notes.txt
 /week2/caesar/notes.txt
@@ -14,6 +15,29 @@ week1.pdf
 /week2/caesar/test.c
 /week2/caesar/test2.c
 /week2/caesar/test-3.c
+
+/week3/plurality/eleicao.c
+/week3/plurality/notes.txt
+/week3/plurality/plural.c
+/week3/plurality/test.c
+/week3/plurality/validate.c
+/week3/plurality/Untitled2
+/week3/plurality/validate
+/week3/plurality/plurality
+
+/week3/runoff/eliminate.c
+/week3/runoff/find_min.c
+/week3/runoff/is_tie.c
+/week3/runoff/notes.txt
+/week3/runoff/rank.c
+/week3/runoff/runoff
+/week3/runoff/tabulate.c
+/week3/runoff/tabulateprintwinner.c
+/week3/runoff/vote.c
+/week3/runoff/winner.c
+
+/week3/tideman/notes.txt
+
 
 
 
