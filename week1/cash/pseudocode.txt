@@ -1,7 +1,0 @@
-1.Ask the user for an amount of change;
-2.Assume that the only coins available are quarters (25¢), dimes (10¢), nickels (5¢), and pennies (1¢).
-3.Decide which coins and how many of each to hand to the customer:
-   3.1.Use the largest coins possible;
-   3.2.Keep track of coins used;
-4.Print the number of coins;
-     
