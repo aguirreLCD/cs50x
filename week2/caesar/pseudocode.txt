@@ -1,0 +1,26 @@
+Check that program was run with one command-line argument
+    if (argc == 2);
+
+Iterate over the provided argument to make sure all characters are digits
+    (isdigit());
+
+Convert that command-line argument from a string to an int
+    (atoi());
+
+Prompt user for plaintext
+    (get_string);
+
+Iterate over each character of the plaintext:
+    (for (int i = 0, n = strlen(s); i < n; i++));
+
+           (isalpha() -> isupper() || islower());
+
+        If it is an uppercase letter, rotate it, preserving case, then print out the rotated character
+
+        If it is a lowercase letter, rotate it, preserving case, then print out the rotated character
+
+        If it is neither, print out the character as is
+
+Print a newline
+    printf("\n");
+    return 0;
