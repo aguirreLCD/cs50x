@@ -14,7 +14,7 @@ db.sqlite3
 
 
 ._*
-.DS_Store
+
 .fseventsd
 .Spotlight-V100
 
@@ -22,3 +22,8 @@ db.sqlite3
 .vscode/
 .history/
 *.code-workspace
+
+.DS_Store
+**/.DS_Store
+*/DS_Store
+*.DS_Store
