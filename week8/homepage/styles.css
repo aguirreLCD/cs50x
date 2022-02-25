@@ -1,0 +1,124 @@
+.jumbotron {
+  background-image: url("/img/glasgow.JPG");
+  background-size: cover !important;
+  height: 400px;
+  background-position: center;
+  max-width: 100%;
+  /* background-attachment: fixed; */
+  background-repeat: no-repeat;
+  /* justify-content: center; */
+  /* align-items: center; */
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+#mask2 {
+  background: linear-gradient( 45deg,
+  rgba(168, 111, 75, 0.7),
+  rgba(21, 1, 53, 0.7) 100%);
+}
+
+#mask {
+  background: linear-gradient( 45deg,
+  rgba(29, 236, 197, 0.7),
+  rgba(38, 1, 97, 0.7) 100%);
+}
+
+#basic_mask {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+#dark_mask {
+  background-color: rgba(251, 251, 251, 0.6);
+}
+
+#ripple_mask {
+  background-color: rgba(251, 251, 251, 0.4);
+}
+
+.card-img-top,
+.card-img-bottom {
+  height: 113px;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-color: #aaa;
+  background-blend-mode: luminosity; */
+}
+
+#footer {
+  background-image: url(./img/nav.JPG);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #aaa;
+  height: 109px;
+}
+
+.card-footer,
+.card-link {
+  /* font-weight: bold; */
+  color: black;
+}
+
+/* clock */
+
+.wrap {
+  text-align: center;
+  padding: 80px 0 0;
+  margin-top: 10px;
+  margin-bottom: 100px;
+}
+
+h2 {
+  font-size: 42px;
+  margin-bottom: 30px;
+}
+
+#clock span {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 80px;
+  background-color: #00000fff;
+  box-shadow: 0 5px 15px #00000fff;
+  color: #fff;
+  margin: 0 15px;
+}
+
+#clock span:first-child {
+  margin-left: 0;
+}
+
+#clock span:last-child {
+  color: #00000fff;
+  background-color: #fff;
+}
+
+#greetings {
+  /* background-color: #fff; */
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 42px;
+  padding: 5px;
+  /* margin-bottom: 20px; */
+  /* box-shadow: 0 5px 15px #bebebe; */
+  animation: greeting 2s ease infinite 1s;
+}
+
+#clock_img {
+  background-image: url(./img/bw.JPG);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  /* height: 100% !important; */
+  max-width: 100%;
+  /*box-sizing: border-box;*/
+}

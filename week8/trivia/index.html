@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Trivia!</title>
+
+    <!-- code from Brian CS50 -->
+    <script>
+        // TODO: Add code to check answers to questions
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // when correct answer is clicked, change color to green
+            let correct = document.querySelector('.correct');
+
+            correct.addEventListener('click', function() {
+                // event.preventDefault();
+                correct.style.backgroundColor = 'green';
+                document.querySelector('#feedback1').innerHTML = 'Correct! Bravo!';
+            });
+
+            // when incorrect answer is clicked, change color to red
+            let incorrects = document.querySelectorAll('.incorrect');
+            for (let i = 0; i < incorrects.length; i++) {
+                incorrects[i].addEventListener('click', function() {
+                    incorrects[i].style.backgroundColor = 'red';
+                    document.querySelector('#feedback1').innerHTML = "Incorrect";
+                    correct.style.backgroundColor = '#d9edff';
+                });
+            }
+
+            // check free response submission
+            document.querySelector('#check').addEventListener('click', function() {
+                let input = document.querySelector('input');
+
+                if (input.value === "Mercury") {
+                    input.style.backgroundColor = 'green';
+                    document.querySelector('#feedback2').innerHTML = 'Correct! Bravo!';
+
+                }
+                else {
+                    input.style.backgroundColor = 'red';
+                    document.querySelector('#feedback2').innerHTML = 'Incorrect';
+                }
+            });
+            // event.preventDefault();
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>Part 1: Multiple Choice </h2>
+            <hr>
+
+            <!-- TODO: Add multiple choice question here -->
+            <h3>What is the currency of Denmark?</h3>
+
+            <!-- <form>
+                <input type="radio" name="choice" value="EU" class="incorrect"> EU
+                <input type="radio" name="choice" value="DKK" class="correct"> DKK
+                <input type="radio" name="choice" value="GBP" class="incorrect"> GBP
+                <input type="radio" name="choice" value="other" class="incorrect"> Other
+            </form> -->
+
+            <button class="incorrect">EU</button>
+            <button class="correct">DKK</button>
+            <button class="incorrect">GBP</button>
+            <button class="incorrect">$</button>
+
+            <p id="feedback1"></p>
+
+        </div>
+
+        <div class="section">
+            <h2>Part 2: Free Response</h2>
+            <hr>
+
+            <!-- TODO: Add free response question here -->
+            <h3>What is the smallest planet in our solar system?</h3>
+            <!-- Mercury -->
+            <input type="text"></input>
+            <button id="check">Check Answer</button>
+
+            <p id="feedback2"></p>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

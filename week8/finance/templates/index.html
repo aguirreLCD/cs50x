@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+<!--<p>Hi {{ current_user }}</p>-->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Name</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">Current price</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+
+  <tbody>
+          <h3>{{ current_user }}' Portfolio</h3>
+
+    <thead>
+          {% for wallet in wallets %}
+            {% if wallet.shares > 0 %}
+              {% if wallet.stock_price < wallet.current_price %}
+                <tr>
+                  <td>{{ wallet.stock_symbol }}</td>
+                  <td>{{ wallet.stock_name }}</td>
+                  <td>{{ wallet.shares }}</td>
+                  <td>{{ wallet.stock_price | usd }}</td>
+                  <td class="table-success">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                    </svg>
+
+                    {{ wallet.current_price | usd }}
+
+                    </td>
+                  <td>{{ (wallet.stock_price * wallet.shares) | usd }}</td>
+                </tr>
+                  {% else %}
+                    <tr>
+                      <td>{{ wallet.stock_symbol }}</td>
+                      <td>{{ wallet.stock_name }}</td>
+                      <td>{{ wallet.shares }}</td>
+                      <td>{{ wallet.stock_price | usd }}</td>
+                      <td class="table-danger">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                        </svg>
+
+                        {{ wallet.current_price | usd }}
+
+                        </td>
+                      <td>{{ (wallet.stock_price * wallet.shares) | usd }}</td>
+                    </tr>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+      </thead>
+
+
+      <tr>
+        <th scope="col" class="table-active">CASH from db</th>
+        <th scope="col" class="table-active"></th>
+        <th scope="col" class="table-active"></th>
+        <th scope="col" class="table-active"></th>
+        <th scope="col" class="table-active"></th>
+        <th scope="row" class="table-active">{{ cash }}</th>
+      </tr>
+
+    </tbody>
+</table>
+
+<table class="table">
+  <thead>
+        <h3>Financial Balance</h3>
+  </thead>
+
+    <tbody>
+
+  <thead>
+    <tr>
+      <th scope="col" class="table-active text-left">bought</th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="row" class="table-active">{{ amount_buy }}</th>
+    </tr>
+
+    <tr>
+      <th scope="col" class="table-active text-left">sold</th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="row" class="table-active">{{ amount_sell }}</th>
+    </tr>
+
+    <tr>
+      <th scope="col" class="table-active text-left">quid</th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="row" class="table-active">{{ quid }}</th>
+    </tr>
+
+    <tr>
+      <th scope="col" class="table-active text-left">savings</th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="row" class="table-active">{{ savings }}</th>
+    </tr>
+
+    </thead>
+  </tbody>
+</table>
+
+
+{% endblock %}

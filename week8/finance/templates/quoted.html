@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Symbol</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <th scope="row">{{ symbol }}</th>
+              <td>{{ name }}</td>
+              <td>{{ price }}</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+            <a href="/quote" class="btn btn-primary">Search Quote</a>
+{% endblock %}

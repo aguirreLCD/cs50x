@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+<!--<p>{{ current_user }}</p>-->
+
+<table class="table table-striped">
+  <thead>
+    <h4>{{ current_user }}'s History</h4>
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Transacted</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for history in historys %}
+        {% if history.deal == "buy" %}
+        <tr>
+          <td>{{ history.stock_symbol }}</td>
+
+          <td class="table-success">+ {{ history.shares }}</td>
+
+          <td>{{ history.stock_price | usd }}</td>
+          <td>- {{ (history.stock_price * history.shares) | usd }}</td>
+          <td>{{ history.date }} {{ history.time }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td>{{ history.stock_symbol }}</td>
+
+          <td class="table-danger">- {{ history.shares }}</td>
+
+          <td>{{ history.stock_price | usd }}</td>
+          <td>+ {{ (history.stock_price  * history.shares) | usd }}</td>
+          <td>{{ history.date }} {{ history.time }}</td>
+        </tr>
+        {% endif %}
+      {% endfor %}
+
+    </tbody>
+</table>
+
+<table class="table">
+  <tbody>
+    <thead>
+      <h4>Financial Balance</h4>
+    </thead>
+
+  <thead>
+    <tr>
+      <th scope="col" class="table-active">bought</th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="row" class="table-active">{{ amount_buy }}</th>
+    </tr>
+
+     <tr>
+      <th scope="col" class="table-active">sold</th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="row" class="table-active">{{ amount_sell }}</th>
+    </tr>
+
+     <tr>
+      <th scope="col" class="table-active">quid</th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="row" class="table-active">{{ quid }}</th>
+    </tr>
+
+
+    <tr>
+      <th scope="col" class="table-active">savings</th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="col" class="table-active"></th>
+      <th scope="row" class="table-active">{{ savings }}</th>
+    </tr>
+
+      </thead>
+    </tbody>
+</table>
+
+{% endblock %}

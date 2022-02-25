@@ -14,6 +14,10 @@ db.sqlite3
 .db
 .o
 
+.JPG
+/.JPG
+/.o
+
 /Makefile
 .Makefile
 *.db
