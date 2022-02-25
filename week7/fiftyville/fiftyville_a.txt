@@ -1,0 +1,517 @@
+description
+
+Theft of the CS50 duck took place at 10:15am at the Chamberlin Street courthouse.
+Interviews were conducted today with three witnesses who were present at the time —
+each of their interview transcripts mentions the courthouse.
+
+name | transcript
+
+                            10:25 courthouse_security_logs
+Ruth | Sometime within ten minutes of the theft, I saw the thief get into a car in the courthouse parking lot and drive away.
+       If you have security footage from the courthouse parking lot, you might want to look for cars that left the parking lot in that time frame.(10:25)
+
+            Eugene --- ATM on Fifer Street atm_transactions // bank_accounts
+Eugene | I don't know the thief's name, but it was someone I recognized. Earlier this morning, before I arrived at the courthouse,
+       I was walking by the ATM on Fifer Street and saw the thief there withdrawing some money.
+
+               10:15  phone_calls  flights airports passengers people
+Raymond | As the thief was leaving the courthouse,    >>>they<<< called<   someone who talked to them for    >less than a minute<.
+        In the call, I heard the thief say that they were planning to take the   >earliest flight out of Fiftyville tomorrow< (July, 29).
+        The thief then asked the person on the other end of the phone to >purchase the flight ticket<.
+
+
+id | activity | license_plate
+260 | exit | 5P2BI95
+261 | exit | 94KL13X
+262 | exit | 6P58WS2
+263 | exit | 4328GD8
+ROGER
+264 | exit | G412CB7
+265 | exit | L93JTIZ
+RUSSEL
+266 | exit | 322W7JE
+EVELYN
+267 | exit | 0NTHK55
+
+
+id | account_number | transaction_type | amount
+246 | 28500762 | withdraw | 48
+
+264 | 28296815 | withdraw | 20
+266 | 76054385 | withdraw | 60
+267 | 49610011 | withdraw | 50
+
+269 | 16153065 | withdraw | 80
+288 | 25506511 | withdraw | 20
+313 | 81061156 | withdraw | 30
+336 | 26013199 | withdraw | 35
+
+
+-- 264 | 28296815 | withdraw | 20
+-- 266 | 76054385 | withdraw | 60
+-- 267 | 49610011 | withdraw | 50
+-- SELECT person_id FROM bank_accounts JOIN people ON person_id = people.id WHERE account_number = 28296815;
+
+id | caller | receiver
+221 | (130) 555-0289 | (996) 555-8899
+224 | (499) 555-9472 | (892) 555-8872
+233 | (367) 555-5533 | (375) 555-8161
+251 | (499) 555-9472 | (717) 555-1342
+254 | (286) 555-6063 | (676) 555-6554
+255 | (770) 555-1861 | (725) 555-3243
+261 | (031) 555-6622 | (910) 555-3251
+279 | (826) 555-1652 | (066) 555-9701
+281 | (338) 555-6650 | (704) 555-2131
+
+
+SELECT * FROM airports;
+
+SELECT * FROM airports WHERE city = "Fiftyville";
+
+SELECT * FROM flights  WHERE year = 2020 AND month = 7 AND day = 29 AND origin_airport_id = 8;
+
+SELECT destination_airport_id FROM flights WHERE year = 2020 AND month = 7 AND day = 29
+AND origin_airport_id IN
+(SELECT id FROM airports WHERE city = "Fiftyville");
+
+
+
+id | abbreviation | full_name | city
+8 | CSF | Fiftyville Regional Airport | Fiftyville
+
+id | origin_airport_id | destination_airport_id | year | month | day | hour | minute
+18 | 8 | 6 | 2020 | 7 | 29 | 16 | 0
+23 | 8 | 11 | 2020 | 7 | 29 | 12 | 15
+36 | 8 | 4 | 2020 | 7 | 29 | 8 | 20
+43 | 8 | 1 | 2020 | 7 | 29 | 9 | 30
+53 | 8 | 9 | 2020 | 7 | 29 | 15 | 20
+
+sqlite> SELECT destination_airport_id FROM flights WHERE year = 2020 AND month = 7 AND day = 29 AND origin_airport_id = 8;
+destination_airport_id
+6
+11
+4
+1
+9
+
+
+sqlite> SELECT * FROM airports;
+id | abbreviation | full_name | city
+
+1 | ORD | O'Hare International Airport | Chicago
+4 | LHR | Heathrow Airport | London
+6 | BOS | Logan International Airport | Boston
+9 | HND | Tokyo International Airport | Tokyo
+11 | SFO | San Francisco International Airport | San Francisco
+
+
+people who
+
+(phone_number receiver) a call from a (phone_number caller)  in (july 28, 2020)
+around 10:15
+
+
+phone_number    call
+passport_number in flights from Fiftyville in july 29, 2020
+license_plate   exit
+account_number  withdraw
+
+
+
+id | name | phone_number | passport_number | license_plate
+
+sqlite> SELECT * FROM bank_accounts JOIN people ON person_id = people.id;
+account_number | person_id | creation_year | id | name | phone_number | passport_number | license_plate
+52833142 | 677560 | 2010 | 677560 | Samuel |  | 2180939853 | 10J5R8P
+50665819 | 893762 | 2010 | 893762 | Janice | (033) 555-9033 |  | 61226BT
+49610011 | 686048 | 2010 | 686048 | Ernest | (367) 555-5533 | 5773159633 | 94KL13X
+79758906 | 279793 | 2010 | 279793 | Cheryl | (450) 555-8297 |  | VWJ25E5
+36709431 | 486361 | 2010 | 486361 | Wayne | (056) 555-0309 |  | D965M59
+47306903 | 651217 | 2010 | 651217 | Alan |  | 2884243902 | JUP02H1
+55656186 | 753885 | 2010 | 753885 | Jennifer | (911) 555-0229 | 7378796210 | 1K44SN8
+65190958 | 779942 | 2010 | 779942 | Harold | (669) 555-6918 |  | DVS39US
+45468795 | 952462 | 2010 | 952462 | Christian |  | 2626335085 | 6CV51G1
+24064261 | 430845 | 2010 | 430845 | Ruth | (772) 555-5770 |  | HZB4129
+86363979 | 948985 | 2010 | 948985 | Robert | (098) 555-1164 | 8304650265 | I449449
+45096649 | 580086 | 2010 | 580086 | Betty | (233) 555-0473 | 2400516856 | 47KK91C
+70992522 | 504758 | 2010 | 504758 | Samantha | (956) 555-1395 | 6720918005 | E9PF99X
+14180174 | 764823 | 2010 | 764823 | Keith | (209) 555-7806 | 9698118788 | 630U2R7
+46222318 | 539960 | 2011 | 539960 | Theresa | (190) 555-4928 | 1833124350 | 668A8SL
+42445987 | 745650 | 2011 | 745650 | Sophia | (027) 555-1068 | 3642612721 | 13FNH73
+34939061 | 985539 | 2011 | 985539 | Lisa | (118) 555-8106 |  | B3VSJVF
+55322348 | 484375 | 2011 | 484375 | Anna | (704) 555-2131 |  |
+39167741 | 810563 | 2011 | 810563 | Gary |  | 6038029185 | S5EI3B0
+56648519 | 477251 | 2011 | 477251 | Billy | (060) 555-2489 | 9290922261 | 2HB7G9N
+70504954 | 804716 | 2011 | 804716 | Kevin | (618) 555-9856 |  | QDS31M6
+26581257 | 857325 | 2011 | 857325 | Timothy | (962) 555-5827 | 7178034193 | 3AML2V7
+18363023 | 975354 | 2011 | 975354 | Logan | (219) 555-0139 | 9692634019 | 6866W0M
+90209473 | 632023 | 2011 | 632023 | Amanda | (821) 555-5262 | 1618186613 | RS7I6A0
+27482737 | 210641 | 2011 | 210641 | Heather | (502) 555-6712 | 4356447308 |
+26567509 | 210245 | 2011 | 210245 | Jordan | (328) 555-9658 | 7951366683 | HW0488P
+65992992 | 795190 | 2011 | 795190 | Frances | (059) 555-4698 | 5138876283 | 97O6H62
+32212020 | 230917 | 2012 | 230917 | Karen | (841) 555-3728 | 5031682798 | IH61GO8
+26013199 | 514354 | 2012 | 514354 | Russell | (770) 555-1861 | 3592750733 | 322W7JE
+21021018 | 267176 | 2012 | 267176 | Cynthia | (458) 555-8396 | 2169423415 |
+38010758 | 682699 | 2012 | 682699 | Linda |  | 4120608613 |
+93903397 | 704850 | 2012 | 704850 | Rachel | (006) 555-0505 |  | 7Z8B130
+57022441 | 757606 | 2012 | 757606 | Douglas | (491) 555-2505 | 3231999695 | 1FW4EUJ
+62075502 | 926715 | 2012 | 926715 | Frank | (356) 555-6641 | 8336437534 | 207W38T
+76849114 | 293753 | 2012 | 293753 | Ryan | (901) 555-8732 |  | 0WZS77X
+50380485 | 572028 | 2012 | 572028 | Paul | (357) 555-0246 | 9143726159 | R64E41W
+97338436 | 545303 | 2012 | 545303 | Nicholas | (095) 555-3639 | 2581746522 | 5840J5X
+36438351 | 331126 | 2012 | 331126 | Brenda | (831) 555-0973 | 1139561952 | N7M42GP
+17161820 | 809265 | 2012 | 809265 | Jose | (914) 555-5994 | 9183348466 |
+26017967 | 242207 | 2012 | 242207 | Louis | (749) 555-4874 | 5361280978 |
+26191313 | 490439 | 2012 | 490439 | Jesse | (693) 555-7986 |  | 608027W
+47746428 | 847116 | 2012 | 847116 | Philip | (725) 555-3243 | 3391710505 | GW362R6
+24907878 | 404704 | 2012 | 404704 | Catherine | (020) 555-6715 |  | NA31S0K
+19531272 | 650560 | 2012 | 650560 | Rose | (336) 555-0077 | 8909375052 | O7JQ1SA
+78860023 | 821978 | 2012 | 821978 | Beverly | (342) 555-9260 | 2793107431 |
+73530768 | 502920 | 2012 | 502920 | Susan |  | 8623763125 |
+89843009 | 274388 | 2012 | 274388 | Laura | (067) 555-4133 | 1801324150 | 4406M71
+16153065 | 458378 | 2012 | 458378 | Roy | (122) 555-4581 | 4408372428 | QX4YZN3
+69638157 | 567218 | 2012 | 567218 | Jack | (996) 555-8899 | 9029462229 | 52R0Y8U
+76896546 | 331484 | 2013 | 331484 | Judy | (918) 555-5327 | 1236213682 | KGG82IR
+49406050 | 937274 | 2013 | 937274 | Raymond | (125) 555-8030 |  | Y18DLY3
+58673910 | 229572 | 2013 | 229572 | Bruce | (789) 555-8833 | 6216255522 | C3S4W87
+54824866 | 617509 | 2013 | 617509 | Jerry | (558) 555-9741 | 3816396248 | 4DD691O
+58552019 | 652412 | 2013 | 652412 | Denise | (994) 555-3373 | 4001449165 | NRYN856
+16194980 | 754943 | 2013 | 754943 | Nathan | (293) 555-1469 | 8914039923 | 11WB3I6
+37543139 | 505688 | 2013 | 505688 | Jean | (695) 555-0348 | 1682575122 | JN7K44M
+71305903 | 223936 | 2013 | 223936 | Natalie |  | 6627121233 | F494C29
+33528144 | 712712 | 2013 | 712712 | Jacqueline | (910) 555-3251 |  | 43V0R5D
+11605357 | 354903 | 2014 | 354903 | Marilyn | (568) 555-3190 | 7441135547 | 0R0FW39
+66254725 | 225259 | 2014 | 225259 | Sean | (867) 555-9103 | 4377966420 |
+92647903 | 341739 | 2014 | 341739 | Rebecca | (891) 555-5672 | 6264773605 |
+20774848 | 423393 | 2014 | 423393 | Carol | (168) 555-6126 | 6128131458 | 81MNC9R
+73183211 | 730171 | 2014 | 730171 | Ann | (601) 555-6795 | 4215752756 | 84869TJ
+99835463 | 534459 | 2014 | 534459 | Olivia | (258) 555-5627 | 6632213958 | X273ZK9
+15911007 | 768035 | 2014 | 768035 | Diane | (147) 555-6818 | 6099879058 | WR2G758
+15452229 | 337221 | 2014 | 337221 | Christine | (608) 555-9302 |  | XE95071
+69278040 | 379932 | 2014 | 379932 | Joshua | (267) 555-2761 | 3761239013 | 1FBL6TH
+66454844 | 622544 | 2014 | 622544 | Joe | (452) 555-8550 |  | 24X1AQM
+28296815 | 395717 | 2014 | 395717 | Bobby | (826) 555-1652 | 9878712108 | 30G67EN
+21004503 | 260099 | 2014 | 260099 | Austin |  | 5140313594 | P160306
+74812642 | 231387 | 2014 | 231387 | Margaret | (068) 555-0183 | 1782675901 | 60563QT
+25506511 | 396669 | 2014 | 396669 | Elizabeth | (829) 555-5269 | 7049073643 | L93JTIZ
+28500762 | 467400 | 2014 | 467400 | Danielle | (389) 555-5198 | 8496433585 | 4328GD8
+19674896 | 419774 | 2014 | 419774 | Teresa | (041) 555-4011 | 8699553201 | HW0BF87
+94973060 | 764352 | 2014 | 764352 | Scott | (801) 555-8906 | 6264781665 | 68K1239
+75571594 | 907148 | 2015 | 907148 | Kimberly | (031) 555-6622 | 9628244268 | Q12B3Z3
+85274751 | 955017 | 2015 | 955017 | Sarah | (505) 555-5698 | 9172951504 | 47602K4
+32747120 | 788911 | 2015 | 788911 | Gloria | (973) 555-3809 | 2835165196 | O010420
+17171330 | 850016 | 2015 | 850016 | Mark | (873) 555-3868 | 4631067354 | YD7376W
+41935128 | 713341 | 2015 | 713341 | Donna |  |  | 8LLB02B
+57029719 | 743806 | 2015 | 743806 | Sharon | (343) 555-0167 | 9687940003 | 9N79I17
+72161631 | 251693 | 2015 | 251693 | Larry | (892) 555-8872 | 2312901747 | O268ZZ0
+92206742 | 585903 | 2015 | 585903 | Arthur | (394) 555-3247 | 7884829354 | 64I1286
+21656307 | 447494 | 2015 | 447494 | Dennis |  | 4149859587 |
+76054385 | 449774 | 2015 | 449774 | Madison | (286) 555-6063 | 1988161715 | 1106N58
+44432923 | 313837 | 2015 | 313837 | Tyler | (660) 555-3095 | 8613298074 | 3H26E71
+33637883 | 253397 | 2015 | 253397 | Diana | (918) 555-2946 | 6131360461 | P743G7C
+26249951 | 495558 | 2016 | 495558 | Stephanie | (204) 555-4136 | 7712200330 | 2001OV9
+87859883 | 623724 | 2016 | 623724 | Julia |  | 5380305521 | L605IHS
+39774254 | 677698 | 2016 | 677698 | John | (016) 555-9166 | 8174538026 | 4468KVT
+79165736 | 637069 | 2016 | 637069 | Michelle | (738) 555-2050 | 4590049635 | 52E25A9
+83997425 | 780088 | 2016 | 780088 | Nicole | (123) 555-5144 | 3835860232 | 91S1K32
+66220752 | 710572 | 2016 | 710572 | Richard |  | 7894166154 | 20Q418R
+95773068 | 630782 | 2016 | 630782 | Alexis | (814) 555-5180 | 5310124622 | X4G3938
+21149684 | 375525 | 2016 | 375525 | Noah | (959) 555-4871 | 1095374669 | 11J91FW
+28579039 | 280744 | 2016 | 280744 | Eugene | (666) 555-5774 | 9584465633 | 47592FJ
+32134232 | 720244 | 2016 | 720244 | Dorothy | (047) 555-0577 | 9135709773 | 7T807V5
+99031604 | 336397 | 2016 | 336397 | Joan | (711) 555-3007 |  | L476K20
+67735369 | 834626 | 2016 | 834626 | Shirley |  | 4754635619 | 3S8505X
+96352349 | 620297 | 2016 | 620297 | Peter | (751) 555-6567 | 9224308981 | N507616
+86850293 | 325548 | 2017 | 325548 | Brandon | (771) 555-6667 | 7874488539 | R3G7486
+37033371 | 809194 | 2017 | 809194 | Alice | (031) 555-9915 | 1679711307 | 1M92998
+32179718 | 828675 | 2017 | 828675 | Nancy | (998) 555-1979 | 7021171868 | 878Z799
+40665580 | 769190 | 2017 | 769190 | Charles | (427) 555-0556 | 3915621712 | R12SA4D
+40231842 | 271242 | 2017 | 271242 | Albert | (042) 555-1772 |  | 673020C
+96336648 | 274893 | 2017 | 274893 | Christina | (547) 555-8781 | 4322787338 | 79X5400
+16113845 | 748674 | 2017 | 748674 | Jeremy | (194) 555-5027 | 1207566299 | V47T75I
+16654966 | 205082 | 2017 | 205082 | Pamela | (113) 555-7544 | 1050247273 | 5CIO816
+69562812 | 604497 | 2017 | 604497 | Ralph | (771) 555-7880 | 6464352048 | 3933NUH
+26797365 | 929343 | 2017 | 929343 | Andrea | (368) 555-3561 | 7954314541 | 245THL6
+13156006 | 920334 | 2017 | 920334 | Stephen | (247) 555-7205 |  | 99N25L1
+40981669 | 282425 | 2017 | 282425 | Martha | (007) 555-2874 |  | O784M2U
+24133830 | 229076 | 2018 | 229076 | Aaron | (420) 555-5821 | 9852889341 |
+56171033 | 243696 | 2018 | 243696 | Amber | (301) 555-4174 | 7526138472 | 6P58WS2
+62690806 | 526940 | 2018 | 526940 | Hannah | (877) 555-0523 | 3366196639 | 88CEO92
+86997719 | 316531 | 2018 | 316531 | Eric | (869) 555-6696 |  | X8T96JM
+79127781 | 837455 | 2018 | 837455 | Andrew | (579) 555-5030 |  | W2CT78U
+52457779 | 384013 | 2018 | 384013 | Debra |  | 2750542732 | 47MEFVA
+91814087 | 485785 | 2018 | 485785 | Barbara | (367) 555-0409 | 1165086731 | HN8I106
+93401152 | 620295 | 2018 | 620295 | Janet | (464) 555-2162 | 2160709651 | P72XP87
+81061156 | 438727 | 2018 | 438727 | Victoria | (338) 555-6650 | 9586786673 | 8X428L0
+23708703 | 518594 | 2018 | 518594 | Randy | (984) 555-5921 | 7538263720 | 106OW2W
+31380453 | 363991 | 2018 | 363991 | Christopher | (775) 555-7584 | 3249120117 | 91UQ3NC
+14969369 | 685894 | 2018 | 685894 | Donald | (971) 555-2231 |  | R964VP9
+79806482 | 539107 | 2019 | 539107 | Joseph | (238) 555-5554 | 4328444220 |
+39696970 | 537582 | 2019 | 537582 | Bradley | (873) 555-8470 | 1526109096 | 9Y0JT4U
+27362189 | 520840 | 2019 | 520840 | Jeffrey |  | 2041495124 | EH6V12Q
+27952274 | 343881 | 2019 | 343881 | Helen |  | 8810489487 | G3QW7I4
+66344537 | 506435 | 2019 | 506435 | Zachary | (839) 555-1757 |  | 5810O6V
+98353484 | 591369 | 2019 | 591369 | Dylan | (380) 555-4380 | 5776544886 | DN6Z7FH
+97773635 | 682850 | 2019 | 682850 | Ethan | (594) 555-6254 | 2996517496 | NAW9653
+93622979 | 734908 | 2019 | 734908 | Maria | (492) 555-5484 |  | 3N39WQN
+94751264 | 864400 | 2019 | 864400 | Berthold | (375) 555-8161 |  | 4V16VO0
+37409101 | 440007 | 2020 | 440007 | Sara | (340) 555-8872 | 3412604728 | 99A843C
+59116006 | 681821 | 2020 | 681821 | David | (260) 555-0610 | 8834222028 | SF5001S
+15871517 | 639344 | 2020 | 639344 | Charlotte | (455) 555-5315 | 7226911797 | Z5FH038
+40237163 | 953420 | 2020 | 953420 | Amy | (670) 555-8598 | 9355133130 |
+
+account_number | person_id | creation_year | id | name | phone_number | passport_number | license_plate
+49610011 | 686048 | 2010 | 686048 | Ernest | (367) 555-5533 | 5773159633 | 94KL13X
+26013199 | 514354 | 2012 | 514354 | Russell | (770) 555-1861 | 3592750733 | 322W7JE
+25506511 | 396669 | 2014 | 396669 | Elizabeth | (829) 555-5269 | 7049073643 | L93JTIZ
+28500762 | 467400 | 2014 | 467400 | Danielle | (389) 555-5198 | 8496433585 | 4328GD8
+56171033 | 243696 | 2018 | 243696 | Amber | (301) 555-4174 | 7526138472 | 6P58WS2
+
+
+account_number | person_id | id | name | phone_number | passport_number | license_plate
+49610011 | 686048 | 686048 | Ernest | (367) 555-5533 | 5773159633 | 94KL13X
+26013199 | 514354 | 514354 | Russell | (770) 555-1861 | 3592750733 | 322W7JE
+25506511 | 396669 | 396669 | Elizabeth | (829) 555-5269 | 7049073643 | L93JTIZ
+28500762 | 467400 | 467400 | Danielle | (389) 555-5198 | 8496433585 | 4328GD8
+56171033 | 243696 | 243696 | Amber | (301) 555-4174 | 7526138472 | 6P58WS2
+
+
+person_id | id | name | phone_number | passport_number | license_plate
+686048 | 686048 | Ernest | (367) 555-5533 | 5773159633 | 94KL13X
+514354 | 514354 | Russell | (770) 555-1861 | 3592750733 | 322W7JE
+396669 | 396669 | Elizabeth | (829) 555-5269 | 7049073643 | L93JTIZ
+467400 | 467400 | Danielle | (389) 555-5198 | 8496433585 | 4328GD8
+
+person_id | id | name | phone_number | passport_number | license_plate | account_number
+686048 | 686048 | Ernest | (367) 555-5533 | 5773159633 | 94KL13X | 49610011
+514354 | 514354 | Russell | (770) 555-1861 | 3592750733 | 322W7JE | 26013199
+396669 | 396669 | Elizabeth | (829) 555-5269 | 7049073643 | L93JTIZ | 25506511
+467400 | 467400 | Danielle | (389) 555-5198 | 8496433585 | 4328GD8 | 28500762
+
+
+person_id | id | name | phone_number | passport_number | license_plate | account_number
+686048 | 686048 | Ernest | (367) 555-5533 | 5773159633 | 94KL13X | 49610011
+514354 | 514354 | Russell | (770) 555-1861 | 3592750733 | 322W7JE | 26013199
+
+
+SELECT id FROM flights WHERE id IN
+(SELECT destination_airport_id FROM flights WHERE year = 2020 AND month = 7 AND day = 29 AND origin_airport_id IN
+(SELECT id FROM airports WHERE city = "Fiftyville"));
+
+name
+Ernest
+Russell
+
+id | origin_airport_id | destination_airport_id
+18 | 8 | 6
+23 | 8 | 11
+36 | 8 | 4
+43 | 8 | 1
+53 | 8 | 9
+
+id
+8
+
+name | full_name | city
+Ernest | O'Hare International Airport | Chicago
+Ernest | Beijing Capital International Airport | Beijing
+Ernest | Los Angeles International Airport | Los Angeles
+Ernest | Heathrow Airport | London
+Ernest | Dallas/Fort Worth International Airport | Dallas
+Ernest | Logan International Airport | Boston
+Ernest | Dubai International Airport | Dubai
+Ernest | Fiftyville Regional Airport | Fiftyville
+Ernest | Tokyo International Airport | Tokyo
+Ernest | Charles de Gaulle Airport | Paris
+Ernest | San Francisco International Airport | San Francisco
+Ernest | Indira Gandhi International Airport | Delhi
+
+
+SELECT full_name, city FROM airports WHERE id IN
+(SELECT id, origin_airport_id, destination_airport_id FROM flights WHERE year = 2020 AND month = 7 AND day = 29);
+
+id | origin_airport_id | destination_airport_id
+18 | 8 | 6
+23 | 8 | 11
+36 | 8 | 4
+43 | 8 | 1
+53 | 8 | 9
+
+
+SELECT full_name, city FROM airports
+JOIN flights
+ON origin_airport_id = flights.id
+AND destination_airport_id = flights.id
+WHERE year = 2020 AND month = 7 AND day = 29
+AND city="Fiftyville;
+
+
+
+
+
+
+
+-- AND passport_number IN
+-- (SELECT passport_number FROM passengers JOIN flights, airports
+-- ON flight_id = flights.id
+-- AND origin_airport_id = airports.id
+-- WHERE year = 2020 AND month = 7 AND day = 29
+-- AND hour BETWEEN 06 AND 08
+-- -- AND city="Fiftyville");
+
+-- SELECT id, full_name, city FROM airports;
+
+-- SELECT * FROM flights WHERE year = 2020 AND month = 7 AND day = 29;
+
+-- SELECT * FROM passengers WHERE passport_number IN
+-- (SELECT passport_number FROM passengers JOIN flights ON flight_id = flights.id WHERE year = 2020 AND month = 7 AND day = 29 AND hour BETWEEN 06 AND 08
+-- AND origin_airport_id IN
+-- (SELECT id FROM airports WHERE city="Fiftyville"));
+
+-- SELECT name FROM people WHERE passport_number IN
+-- (SELECT passport_number FROM passengers WHERE passport_number IN
+-- (SELECT passport_number FROM passengers JOIN flights ON flight_id = flights.id WHERE year = 2020 AND month = 7 AND day = 29 AND hour BETWEEN 06 AND 08
+-- AND origin_airport_id IN
+-- (SELECT id FROM airports WHERE city="Fiftyville")));
+
+
+-- JOIN flights
+-- ON origin_airport_id = flights.id
+-- AND destination_airport_id = flights.id;
+-- WHERE year = 2020 AND month = 7 AND day = 29;
+-- AND city="Fiftyville";
+
+
+-- AND passport_number IN
+-- (SELECT passport_number FROM passengers JOIN flights ON flight_id = flights.id WHERE year = 2020 AND month = 7 AND day = 29);
+
+
+-- SELECT id, origin_airport_id, destination_airport_id FROM flights WHERE year = 2020 AND month = 7 AND day = 29;
+-- SELECT id FROM airports WHERE city = "Fiftyville";
+
+-- SELECT passport_number FROM passengers
+-- JOIN flights ON flight_id = flights.id
+-- WHERE year = 2020 AND month = 7 AND day = 29;
+
+
+-- Keep a log of any SQL queries you execute as you solve the mystery.
+
+-- the theft took place on July 28, 2020 and that it took place on Chamberlin Street.
+-- Start by looking for a crime scene report that matches the date and the location of the crime.
+SELECT description FROM crime_scene_reports WHERE year = 2020 AND month = 7 AND day = 28 AND street = "Chamberlin Street";
+
+-- each of their interview transcripts mentions the courthouse.
+-- sqlite> .schema interviews
+-- SELECT transcript FROM interviews WHERE year = 2020 AND month = 7 AND day = 28;
+-- SELECT name, transcript FROM interviews WHERE year = 2020 AND month = 7 AND day = 28;
+SELECT name, transcript FROM interviews WHERE year = 2020 AND month = 7 AND day = 28 AND transcript LIKE '%courthouse%';
+
+-- Ruth: look for cars that left the parking lot in that time frame.
+-- .schema courthouse_security_logs
+SELECT id, activity, license_plate FROM courthouse_security_logs WHERE year = 2020 AND month = 7 AND day = 28
+AND hour = 10
+AND minute BETWEEN 15 AND 30
+AND activity = "exit";
+
+-- Eugene: ATM on Fifer Street / bank_accounts
+-- sqlite> .schema atm_transactions
+SELECT id, account_number, transaction_type, amount FROM atm_transactions WHERE year = 2020 AND month = 7 AND day = 28
+AND atm_location = "Fifer Street"
+AND transaction_type = "withdraw";
+
+SELECT * FROM bank_accounts JOIN people ON person_id = people.id WHERE license_plate IN
+(SELECT license_plate FROM courthouse_security_logs WHERE year = 2020 AND month = 7 AND day = 28
+AND hour = 10
+AND minute BETWEEN 15 AND 30
+AND activity = "exit");
+
+-- Raymond: phone calls, flights, airports, passengers, people
+-- purchase the flight ticket
+SELECT id, caller, receiver FROM phone_calls WHERE year = 2020 AND month = 7 AND day = 28
+AND duration <= 60;
+
+
+SELECT person_id, id, name, phone_number, passport_number, license_plate, account_number FROM bank_accounts
+JOIN people ON person_id = people.id
+WHERE license_plate IN
+(SELECT license_plate FROM courthouse_security_logs WHERE year = 2020 AND month = 7 AND day = 28
+AND hour = 10
+AND minute BETWEEN 15 AND 30
+AND activity = "exit")
+AND account_number IN
+(SELECT account_number FROM atm_transactions WHERE year = 2020 AND month = 7 AND day = 28
+AND atm_location = "Fifer Street"
+AND transaction_type = "withdraw")
+AND phone_number IN
+(SELECT caller FROM phone_calls WHERE year = 2020 AND month = 7 AND day = 28
+AND duration <= 60)
+AND passport_number IN
+(SELECT passport_number FROM passengers JOIN flights ON flight_id = flights.id WHERE year = 2020 AND month = 7 AND day = 29);
+
+-- phone caller - Ernest
+SELECT name FROM bank_accounts
+JOIN people ON person_id = people.id
+WHERE license_plate IN
+(SELECT license_plate FROM courthouse_security_logs WHERE year = 2020 AND month = 7 AND day = 28
+AND hour = 10
+AND minute BETWEEN 01 AND 30
+AND activity = "exit")
+AND account_number IN
+(SELECT account_number FROM atm_transactions WHERE year = 2020 AND month = 7 AND day = 28
+AND atm_location = "Fifer Street"
+AND transaction_type = "withdraw")
+AND phone_number IN
+(SELECT caller FROM phone_calls WHERE year = 2020 AND month = 7 AND day = 28
+AND duration <= 60)
+AND passport_number IN
+(SELECT passport_number FROM passengers JOIN flights ON flight_id = flights.id WHERE year = 2020 AND month = 7 AND day = 29 AND hour BETWEEN 05 AND 08
+AND origin_airport_id IN
+(SELECT id FROM airports WHERE city="Fiftyville"));
+
+-- phone receiver - Danielle
+SELECT name FROM bank_accounts
+JOIN people ON person_id = people.id
+WHERE license_plate IN
+(SELECT license_plate FROM courthouse_security_logs WHERE year = 2020 AND month = 7 AND day = 28
+AND hour = 10
+AND minute BETWEEN 01 AND 30
+AND activity = "exit")
+AND account_number IN
+(SELECT account_number FROM atm_transactions WHERE year = 2020 AND month = 7 AND day = 28
+AND atm_location = "Fifer Street"
+AND transaction_type = "withdraw")
+AND phone_number IN
+(SELECT receiver FROM phone_calls WHERE year = 2020 AND month = 7 AND day = 28
+AND duration <= 60)
+AND passport_number IN
+(SELECT passport_number FROM passengers JOIN flights ON flight_id = flights.id WHERE year = 2020 AND month = 7 AND day = 29 AND hour BETWEEN 05 AND 08
+AND origin_airport_id IN
+(SELECT id FROM airports WHERE city="Fiftyville"));
+
+
+
+
+SELECT receiver FROM phone_calls WHERE year = 2020 AND month = 7 AND day = 28
+AND duration < 59;
+
+
+SELECT * FROM passengers WHERE passport_number IN
+(SELECT passport_number FROM passengers JOIN flights ON flight_id = flights.id WHERE year = 2020 AND month = 7 AND day = 29 AND hour BETWEEN 06 AND 08
+AND origin_airport_id IN
+(SELECT id FROM airports WHERE city="Fiftyville"));
+
+SELECT name FROM people WHERE passport_number IN
+(SELECT passport_number FROM passengers JOIN flights ON flight_id = flights.id WHERE year = 2020 AND month = 7 AND day = 29 AND hour BETWEEN 06 AND 08
+AND origin_airport_id IN
+(SELECT id FROM airports WHERE city="Fiftyville")
+AND phone_number IN
+(SELECT caller FROM phone_calls WHERE year = 2020 AND month = 7 AND day = 28
+AND duration <= 60));
+
+
+SELECT * FROM flights WHERE year = 2020 AND month = 7 AND day = 29 AND hour BETWEEN 06 AND 08;
+
+SELECT destination_airport_id FROM flights WHERE year = 2020 AND month = 7 AND day = 29 AND hour BETWEEN 06 AND 08;
+
+SELECT full_name, city FROM airports JOIN flights ON destination_airport_id = airports.id
+WHERE year = 2020 AND month = 7 AND day = 29 AND hour BETWEEN 06 AND 08;

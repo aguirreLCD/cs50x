@@ -11,6 +11,15 @@ venv/
 # Database
 db.sqlite3
 
+.db
+.o
+
+/Makefile
+.Makefile
+*.db
+.Database
+*.Database
+/.o
 *.o
 Makefile
 
